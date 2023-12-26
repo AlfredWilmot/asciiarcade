@@ -1,8 +1,13 @@
 #!/bin/bash
 
-install_gtest() {
-  cd tests/
-  git submodule add https://github.com/google/googletest.git -b release-1.12.1
+PROJECT_DIR="${PWD}"
+
+gtest() {
+    BUILD_DIR="${PROJECT_DIR}/build"
+    cmake -S . -B "${BUILD_DIR}"
+    cmake --build "${BUILD_DIR}"
+    cd "${BUILD_DIR}" && ctest
+    cd "${PROJECT_DIR}"
 }
 
 setup_cpputest_test_runner() {

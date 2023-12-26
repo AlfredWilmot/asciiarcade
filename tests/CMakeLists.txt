@@ -18,9 +18,17 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-add_executable("${PROJECT_NAME}" main.cpp)
+enable_testing()
+add_executable(
+    "${PROJECT_NAME}"
+    SceneTest.cpp
+)
 
-target_link_libraries("${PROJECT_NAME}" gtest_main gmock_main)
+target_link_libraries(
+    "${PROJECT_NAME}"
+    GTest::gtest_main
+    GTest::gmock_main
+)
 
 include(GoogleTest)
 gtest_discover_tests("${PROJECT_NAME}")
