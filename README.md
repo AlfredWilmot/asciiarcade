@@ -33,3 +33,5 @@ Each new entity will be represented inernally via a dictionary
 
 ## References
 - https://ncona.com/2019/03/building-a-cpp-project-with-cmake/
+
+## CMake
