@@ -1,3 +1,4 @@
+#include <gtest/gtest.h>
 
 TEST_GROUP(SceneTest)
 {
