@@ -1,6 +1,6 @@
 #!/bin/bash
 
-setup_test_runner() {
+setup_cpputest_test_runner() {
     TEST_RUNNER_MODULE='cpputest/'
     if [ ! -d "$TEST_RUNNER_MODULE"  ]; then
         git submodule add https://github.com/cpputest/cpputest.git
