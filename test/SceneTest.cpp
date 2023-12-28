@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include "Scene.h"
 
 /*
 - initialize scene with a background
