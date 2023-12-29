@@ -83,6 +83,17 @@ TEST(SceneTest, can_successfully_add_a_single_character_to_the_scene)
     ASSERT_EQ(expected, actual);
 }
 
+TEST(SceneTest, valid_background_scene_data_is_released_when_done)
+{
+    Scene scene(valid_background_scene);
+    char * content_buffer_ptr = scene.print();
+    void * expected_value = NULL;
+    // somehow release content_buffer_ptr
+    ASSERT_EQ(expected_value, content_buffer_ptr);
+    // References:
+    // > https://www.cs.fsu.edu/~myers/cop3330/notes/dma.html
+}
+
 //TEST(SceneTest, todo)
 //{
 //    FAIL();
