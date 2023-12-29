@@ -9,8 +9,9 @@ Scene::Scene(const char* scene_content_buffer)
     strcpy(this->_content_buffer, scene_content_buffer);
 };
 
-void Scene::print(){
+char * Scene::print(){
     std::cout << this->_content_buffer << std::endl;
+    return this->_content_buffer;
 };
 
 int Scene::_number_of_chars_before_first_newline(){
