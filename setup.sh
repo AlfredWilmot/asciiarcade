@@ -4,10 +4,11 @@ PROJECT_DIR="${PWD}"
 
 gtest() {
     BUILD_DIR="${PROJECT_DIR}/build"
-    cmake -S . -B "${BUILD_DIR}"
+    if [ -z "${BUILD_DIR}/Makefile" ]; then
+        cmake -S . -B "${BUILD_DIR}"
+    fi
     cmake --build "${BUILD_DIR}"
-    cd "${BUILD_DIR}" && ctest
-    cd "${PROJECT_DIR}"
+    ./build/asciiarcade
 }
 
 setup_cpputest_test_runner() {
