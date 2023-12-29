@@ -11,19 +11,29 @@ Scene::Scene(const char* scene_background)
     if (this->_number_of_chars_before_first_newline(scene_background) <= 0)
         throw std::invalid_argument("Invalid scene, must contain at least one newline.");
 
-    this->_content_buffer=(char*)malloc(strlen(scene_background)*sizeof(char));
+    /* Allocating memory to background, and copying contents; don't forget the trailing '\0'! */
+    this->_content_buffer=(char*)malloc(strlen(scene_background)*sizeof(char)+1);
     strcpy(this->_content_buffer, scene_background);
 };
 
 Scene::~Scene()
 {
-    free(this->_content_buffer);
+    if(this->_content_buffer != NULL)
+        free(this->_content_buffer);
 };
 
 char * Scene::print(){
     std::cout << this->_content_buffer << std::endl;
     return this->_content_buffer;
 };
+
+int Scene::count(){
+    return 0;
+};
+
+bool Scene::add(const char* thing){
+    return true;
+}
 
 int Scene::_number_of_chars_before_first_newline(const char* content_buffer){
     for (int i{}; i <= strlen(content_buffer); i++)
