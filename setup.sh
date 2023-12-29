@@ -4,7 +4,10 @@ PROJECT_DIR="${PWD}"
 
 gtest() {
     BUILD_DIR="${PROJECT_DIR}/build"
-    if [ -z "${BUILD_DIR}/Makefile" ]; then
+    if [ ! -d "./build" ]; then
+        mkdir build
+    fi
+    if [ ! -f "${BUILD_DIR}/Makefile" ]; then
         cmake -S . -B "${BUILD_DIR}"
     fi
     cmake --build "${BUILD_DIR}"
