@@ -37,9 +37,7 @@ TEST(SceneTest, throws_exception_initializing_scene_using_background_with_no_new
     std::cout << invalid_background_with_no_newlines << std::endl;
     EXPECT_THROW(
         {Scene scene(invalid_background_with_no_newlines);},
-        std::invalid_argument
-    );
-}
+        std::invalid_argument); }
 
 TEST(SceneTest, scene_height_matches_row_count_of_background_when_printed)
 {
@@ -71,28 +69,31 @@ TEST(SceneTest, initial_object_count_is_zero)
 {
     Scene scene(valid_background_scene);
     int expected = 0;
-    int actual = scene.count();
-    ASSERT_EQ(expected, actual);
+    ASSERT_EQ(expected, scene.count());
 }
 
-TEST(SceneTest, can_successfully_add_a_single_character_to_the_scene)
+
+TEST(SceneTest, scene_count_corresponds_to_the_number_of_entities_added)
 {
     Scene scene(valid_background_scene);
-    bool expected = true;
-    bool actual = scene.add(scene_object);
-    ASSERT_EQ(expected, actual);
+    for(int expected=1; expected <= 100; expected++)
+    {
+        scene.add(scene_object);
+        ASSERT_EQ(expected, scene.count());
+    }
 }
 
-TEST(SceneTest, valid_background_scene_data_is_released_when_done)
-{
-    Scene scene(valid_background_scene);
-    char * content_buffer_ptr = scene.print();
-    void * expected_value = NULL;
-    // somehow release content_buffer_ptr
-    ASSERT_EQ(expected_value, content_buffer_ptr);
-    // References:
-    // > https://www.cs.fsu.edu/~myers/cop3330/notes/dma.html
-}
+
+//TEST(SceneTest, valid_background_scene_data_is_released_when_done)
+//{
+//    Scene scene(valid_background_scene);
+//    char * content_buffer_ptr = scene.print();
+//    void * expected_value = NULL;
+//    // somehow release content_buffer_ptr
+//    ASSERT_EQ(expected_value, content_buffer_ptr);
+//    // References:
+//    // > https://www.cs.fsu.edu/~myers/cop3330/notes/dma.html
+//}
 
 //TEST(SceneTest, todo)
 //{

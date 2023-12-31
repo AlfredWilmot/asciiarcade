@@ -28,11 +28,11 @@ char * Scene::print(){
 };
 
 int Scene::count(){
-    return 0;
+    return this->_entity_counter;
 };
 
-bool Scene::add(const char* thing){
-    return true;
+void Scene::add(const char* thing){
+    this->_entity_counter+=1;
 }
 
 int Scene::_number_of_chars_before_first_newline(const char* content_buffer){
