@@ -14,8 +14,10 @@ class Scene {
 
         /* Returns the total number of objects added to the scene */
         int count();
+
         // adds a new thing to the scene
-        bool add(const char* thing);
+        void add(const char* thing);
+
         // gets the last thing that was added to the scene 
         const char* pop();
 
@@ -35,4 +37,7 @@ class Scene {
 
         /* Validates that content buffer forms a rectangular scene */
         bool _all_newlines_are_on_same_column(const char*);
+
+        /* tracks the number of entities that have been added to the scene */
+        int _entity_counter{};
 };
