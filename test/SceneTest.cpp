@@ -16,7 +16,6 @@ TEST(SceneTest, newly_initialized_scene_only_prints_background)
     Scene scene(valid_background_scene);
     const char * expected = valid_background_scene;
     const char * actual = scene.print();
-    std::cout << actual << std::endl;
     EXPECT_STREQ(expected, actual);
 }
 
@@ -27,7 +26,6 @@ TEST(SceneTest, throws_no_exception_initializing_scene_with_valid_background)
 
 TEST(SceneTest, throws_exception_initializing_scene_using_background_with_misaligned_newlines)
 {
-    std::cout << invalid_background_with_newlines_on_different_columns << std::endl;
     EXPECT_THROW(
         {Scene scene(invalid_background_with_newlines_on_different_columns);},
         std::invalid_argument
@@ -36,7 +34,6 @@ TEST(SceneTest, throws_exception_initializing_scene_using_background_with_misali
 
 TEST(SceneTest, throws_exception_initializing_scene_using_background_with_no_newlines)
 {
-    std::cout << invalid_background_with_no_newlines << std::endl;
     EXPECT_THROW(
         {Scene scene(invalid_background_with_no_newlines);},
         std::invalid_argument); }
