@@ -12,7 +12,7 @@ class Scene {
         ~Scene();
 
         /* Dumps contents of scene onto the display */
-        char* print(std::tuple<int, int> coord={});
+        char* print(std::tuple<int, int> coord={-1,-1});
 
         /* Returns the total number of objects added to the scene */
         int count();
@@ -24,8 +24,8 @@ class Scene {
         const char* pop();
 
         /* Scene attribute getter methods */
-        int height(){return _total_number_of_newlines(this->_scene_contents);};
-        int width(){return _number_of_chars_before_first_newline(this->_scene_contents);};
+        int height;
+        int width;
 
     private:
         /* All characters that constitute the scene (including escape characters) */
@@ -42,4 +42,7 @@ class Scene {
 
         /* Validates that content buffer forms a rectangular scene */
         bool _all_newlines_are_on_same_column(const char*);
+
+        /* Converts an (x,y) coordinate to the equivalent content_buffer index */
+        int _coord_to_buffer_index(int x, int y);
 };

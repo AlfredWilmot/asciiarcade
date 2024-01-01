@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include "data/scene_test_data.h"
 #include "Scene.h"
+#include <tuple>
 
 /*
 - initialize scene with a background
@@ -44,7 +45,7 @@ TEST(SceneTest, scene_height_matches_row_count_of_background_when_printed)
 {
     Scene scene(valid_background_scene);
     int expected = expected_scene_height;
-    int actual = scene.height();
+    int actual = scene.height;
     ASSERT_EQ(expected, actual);
 
 }
@@ -53,7 +54,7 @@ TEST(SceneTest, scene_width_matches_column_count_of_background_when_printed)
 {
     Scene scene(valid_background_scene);
     int expected = expected_scene_width;
-    int actual = scene.width();
+    int actual = scene.width;
     ASSERT_EQ(expected, actual);
 }
 
@@ -87,7 +88,7 @@ TEST(SceneTest, scene_count_corresponds_to_the_number_of_entities_added)
 TEST(SceneTest, print_an_individual_character_from_scene_using_coordinates)
 {
     Scene scene(valid_background_scene);
-    char actual= *scene.print({2,18});
+    char actual= *scene.print({18,2});
     char expected = 'T';
     ASSERT_EQ(expected, actual);
 }

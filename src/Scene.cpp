@@ -13,6 +13,10 @@ Scene::Scene(const char* scene_background)
     /* Allocating memory to background, and copying contents; don't forget the trailing '\0'! */
     this->_scene_contents=(char*)malloc(strlen(scene_background)*sizeof(char)+1);
     strcpy(this->_scene_contents, scene_background);
+
+    /* Storing background dimensions when scene is initialized */
+    this->height=_total_number_of_newlines(this->_scene_contents);
+    this->width=_number_of_chars_before_first_newline(this->_scene_contents);
 };
 
 Scene::~Scene()
@@ -21,8 +25,16 @@ Scene::~Scene()
         free(this->_scene_contents);
 };
 
+int Scene::_coord_to_buffer_index(int x, int y){
+    return y*(this->width+1)+x;
+};
+
 char * Scene::print(std::tuple<int, int> coord){
-    return this->_scene_contents;
+    int x = std::get<0>(coord);
+    int y = std::get<1>(coord);
+    if(x == -1 && y == -1)
+        return this->_scene_contents;
+    return &this->_scene_contents[this->_coord_to_buffer_index(x, y)];
 };
 
 int Scene::count(){
