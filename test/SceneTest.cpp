@@ -91,6 +91,15 @@ TEST(SceneTest, print_an_individual_character_from_scene_using_coordinates)
     char actual= *scene.print({18,2});
     char expected = 'T';
     ASSERT_EQ(expected, actual);
+    actual= *scene.print({25,2});
+    expected = 'E';
+    ASSERT_EQ(expected, actual);
+    actual= *scene.print({33,2});
+    expected = 'S';
+    ASSERT_EQ(expected, actual);
+    actual= *scene.print({38,2});
+    expected = 'T';
+    ASSERT_EQ(expected, actual);
 }
 
 
