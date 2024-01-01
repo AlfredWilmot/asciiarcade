@@ -1,3 +1,4 @@
+#include <tuple>
 #pragma once
 
 /* Presents the game-state via ASCII text */
@@ -11,7 +12,7 @@ class Scene {
         ~Scene();
 
         /* Dumps contents of scene onto the display */
-        char* print();
+        char* print(std::tuple<int, int> coord={});
 
         /* Returns the total number of objects added to the scene */
         int count();
@@ -23,12 +24,12 @@ class Scene {
         const char* pop();
 
         /* Scene attribute getter methods */
-        int height(){return _total_number_of_newlines(this->_content_buffer);};
-        int width(){return _number_of_chars_before_first_newline(this->_content_buffer);};
+        int height(){return _total_number_of_newlines(this->_scene_contents);};
+        int width(){return _number_of_chars_before_first_newline(this->_scene_contents);};
 
     private:
         /* All characters that constitute the scene (including escape characters) */
-        char* _content_buffer{};
+        char* _scene_contents{};
 
         /* tracks the number of entities that have been added to the scene */
         int _entity_counter{};

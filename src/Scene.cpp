@@ -12,19 +12,19 @@ Scene::Scene(const char* scene_background)
         throw std::invalid_argument("Invalid scene, must contain at least one newline.");
 
     /* Allocating memory to background, and copying contents; don't forget the trailing '\0'! */
-    this->_content_buffer=(char*)malloc(strlen(scene_background)*sizeof(char)+1);
-    strcpy(this->_content_buffer, scene_background);
+    this->_scene_contents=(char*)malloc(strlen(scene_background)*sizeof(char)+1);
+    strcpy(this->_scene_contents, scene_background);
 };
 
 Scene::~Scene()
 {
-    if(this->_content_buffer != NULL)
-        free(this->_content_buffer);
+    if(this->_scene_contents != NULL)
+        free(this->_scene_contents);
 };
 
-char * Scene::print(){
-    std::cout << this->_content_buffer << std::endl;
-    return this->_content_buffer;
+char * Scene::print(std::tuple<int, int> coord){
+    std::cout << this->_scene_contents << std::endl;
+    return this->_scene_contents;
 };
 
 int Scene::count(){
@@ -35,27 +35,27 @@ void Scene::add(const char* thing){
     this->_entity_counter+=1;
 }
 
-int Scene::_number_of_chars_before_first_newline(const char* content_buffer){
-    for (int i{}; i <= strlen(content_buffer); i++)
-        if (content_buffer[i] == '\n')
+int Scene::_number_of_chars_before_first_newline(const char* scene_contents){
+    for (int i{}; i <= strlen(scene_contents); i++)
+        if (scene_contents[i] == '\n')
             return i;
     return -1;
 };
 
-int Scene::_total_number_of_newlines(const char* content_buffer){
+int Scene::_total_number_of_newlines(const char* scene_contents){
     int newline_count{};
-    for (int i=1; i < strlen(content_buffer)+1; i++)
-        if (content_buffer[i] == '\n')
+    for (int i=1; i < strlen(scene_contents)+1; i++)
+        if (scene_contents[i] == '\n')
             newline_count++;
     return newline_count;
 };
 
-bool Scene::_all_newlines_are_on_same_column(const char* content_buffer){
+bool Scene::_all_newlines_are_on_same_column(const char* scene_contents){
     int previous_line_char_count=0;
     int current_line_char_count=0;
-    for (int i{}; i <= strlen(content_buffer); i++)
+    for (int i{}; i <= strlen(scene_contents); i++)
     {
-        if (content_buffer[i] == '\n')
+        if (scene_contents[i] == '\n')
         {
             if (previous_line_char_count != 0)
             {

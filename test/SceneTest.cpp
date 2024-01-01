@@ -83,6 +83,14 @@ TEST(SceneTest, scene_count_corresponds_to_the_number_of_entities_added)
     }
 }
 
+TEST(SceneTest, print_an_individual_character_from_scene_using_coordinates)
+{
+    Scene scene(valid_background_scene);
+    char actual= *scene.print({2,18});
+    char expected = 'T';
+    ASSERT_EQ(expected, actual);
+}
+
 
 //TEST(SceneTest, valid_background_scene_data_is_released_when_done)
 //{
