@@ -1,6 +1,5 @@
 #include <cstdlib>
 #include <cstring>
-#include <iostream>
 #include <stdexcept>
 #include "Scene.h"
 
@@ -23,7 +22,6 @@ Scene::~Scene()
 };
 
 char * Scene::print(std::tuple<int, int> coord){
-    std::cout << this->_scene_contents << std::endl;
     return this->_scene_contents;
 };
 

@@ -15,6 +15,7 @@ TEST(SceneTest, newly_initialized_scene_only_prints_background)
     Scene scene(valid_background_scene);
     const char * expected = valid_background_scene;
     const char * actual = scene.print();
+    std::cout << actual << std::endl;
     EXPECT_STREQ(expected, actual);
 }
 
