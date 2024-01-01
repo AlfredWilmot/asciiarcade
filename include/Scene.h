@@ -1,5 +1,6 @@
 #pragma once
 
+/* Presents the game-state via ASCII text */
 class Scene {
 
     public:
@@ -15,10 +16,10 @@ class Scene {
         /* Returns the total number of objects added to the scene */
         int count();
 
-        // adds a new thing to the scene
+        /* adds a new thing to the scene */
         void add(const char* thing);
 
-        // gets the last thing that was added to the scene 
+        /* gets the last thing that was added to the scene */
         const char* pop();
 
         /* Scene attribute getter methods */
@@ -29,6 +30,9 @@ class Scene {
         /* All characters that constitute the scene (including escape characters) */
         char* _content_buffer{};
 
+        /* tracks the number of entities that have been added to the scene */
+        int _entity_counter{};
+
         /* Determines scene width */
         int _number_of_chars_before_first_newline(const char*);
 
@@ -37,7 +41,4 @@ class Scene {
 
         /* Validates that content buffer forms a rectangular scene */
         bool _all_newlines_are_on_same_column(const char*);
-
-        /* tracks the number of entities that have been added to the scene */
-        int _entity_counter{};
 };
