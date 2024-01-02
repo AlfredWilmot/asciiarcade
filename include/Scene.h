@@ -1,6 +1,7 @@
 #include <tuple>
 #pragma once
 
+
 /* Presents the game-state via ASCII text */
 class Scene {
 
@@ -12,7 +13,13 @@ class Scene {
         ~Scene();
 
         /* Dumps contents of scene onto the display */
-        char* print(std::tuple<int, int> coord={-1,-1});
+
+            // print entire scene
+            char * print();
+            // print an individual character from scene
+            char * print(std::tuple<int, int> coord);
+            // print a "region-of-interest" (ROI) from scene
+            char * print(std::tuple<int, int> coord_0, std::tuple<int, int> coord_1);
 
         /* Returns the total number of objects added to the scene */
         int count();

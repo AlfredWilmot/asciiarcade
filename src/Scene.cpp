@@ -29,12 +29,22 @@ int Scene::_coord_to_buffer_index(int x, int y){
     return y*(this->width+1)+x;
 };
 
+char * Scene::print(){
+    return this->_scene_contents;
+};
+
 char * Scene::print(std::tuple<int, int> coord){
     int x = std::get<0>(coord);
     int y = std::get<1>(coord);
-    if(x == -1 && y == -1)
-        return this->_scene_contents;
     return &this->_scene_contents[this->_coord_to_buffer_index(x, y)];
+};
+
+char * Scene::print(std::tuple<int, int> coord_0, std::tuple<int, int> coord_1){
+    int x_0 = std::get<0>(coord_0);
+    int y_0 = std::get<1>(coord_0);
+    int x_1 = std::get<0>(coord_1);
+    int y_1 = std::get<1>(coord_1);
+    return nullptr;
 };
 
 int Scene::count(){
