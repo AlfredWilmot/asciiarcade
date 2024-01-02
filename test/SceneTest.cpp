@@ -107,6 +107,14 @@ TEST(SceneTest, print_a_group_of_characters_from_scene_using_coordinate_pair)
     ASSERT_STREQ(expected, actual);
 }
 
+TEST(SceneTest, attempting_to_print_invalid_coordinate_throws_exception)
+{
+    EXPECT_THROW(
+        {},
+        std::invalid_argument
+    );
+}
+
 
 //TEST(SceneTest, valid_background_scene_data_is_released_when_done)
 //{
