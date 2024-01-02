@@ -85,18 +85,26 @@ TEST(SceneTest, scene_count_corresponds_to_the_number_of_entities_added)
 TEST(SceneTest, print_an_individual_character_from_scene_using_coordinates)
 {
     Scene scene(valid_background_scene);
-    char actual= *scene.print({18,2});
+    char* actual = scene.print({18,2});
     char expected = 'T';
-    ASSERT_EQ(expected, actual);
-    actual= *scene.print({25,2});
+    ASSERT_EQ(expected, *actual);
+    actual = scene.print({25,2});
     expected = 'E';
-    ASSERT_EQ(expected, actual);
-    actual= *scene.print({33,2});
+    ASSERT_EQ(expected, *actual);
+    actual= scene.print({33,2});
     expected = 'S';
-    ASSERT_EQ(expected, actual);
-    actual= *scene.print({38,2});
+    ASSERT_EQ(expected, *actual);
+    actual= scene.print({38,2});
     expected = 'T';
-    ASSERT_EQ(expected, actual);
+    ASSERT_EQ(expected, *actual);
+}
+
+TEST(SceneTest, print_a_group_of_characters_from_scene_using_coordinate_pair)
+{
+    Scene scene(valid_background_scene);
+    char* actual = scene.print({18,2}, {42,6});
+    const char* expected = valid_background_scene_segment;
+    ASSERT_STREQ(expected, actual);
 }
 
 

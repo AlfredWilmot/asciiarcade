@@ -7,6 +7,12 @@ static const char* valid_background_scene =
 "|                   T    E         S    T                      |\n"
 "|                   T    EEEE   SSS     T                      |\n"
 "................................................................\n";
+static const char* valid_background_scene_segment =
+"TTTTT  EEEE    SSS  TTTTT\n"
+"  T    E      S       T  \n"
+"  T    EEEE    SS     T  \n"
+"  T    E         S    T  \n"
+"  T    EEEE   SSS     T  \n";
 
 static const char* invalid_background_with_newlines_on_different_columns= 
 "\"These newlines\n"
