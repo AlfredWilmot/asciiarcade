@@ -15,11 +15,11 @@ class Scene {
         /* Dumps contents of scene onto the display */
 
             // print entire scene
-            char * print();
+            char* print();
             // print an individual character from scene
-            char * print(std::tuple<int, int> coord);
+            char* print(std::tuple<int, int> coord);
             // print a "region-of-interest" (ROI) from scene
-            char * print(std::tuple<int, int> coord_0, std::tuple<int, int> coord_1);
+            char* print(std::tuple<int, int> coord_0, std::tuple<int, int> coord_1);
 
         /* Returns the total number of objects added to the scene */
         int count();
