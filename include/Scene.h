@@ -1,9 +1,11 @@
 #include <tuple>
 #pragma once
 
-
-/* Presents the game-state via ASCII text */
-class Scene {
+/* Uses the inputted ASCII string to represent the game-state
+ * The "Scene" has no concept of the entites contained within,
+ * it merely shows what's there.
+ */
+class Scene{
 
     public:
         /* Associates a buffer of ascii content to the scene instance */
@@ -21,15 +23,6 @@ class Scene {
             // print a "region-of-interest" (ROI) from scene
             char* print(std::tuple<int, int> coord_0, std::tuple<int, int> coord_1);
 
-        /* Returns the total number of objects added to the scene */
-        int count();
-
-        /* adds a new thing to the scene */
-        void add(const char* thing);
-
-        /* gets the last thing that was added to the scene */
-        const char* pop();
-
         /* Scene attribute getter methods */
         int height;
         int width;
@@ -37,9 +30,6 @@ class Scene {
     private:
         /* All characters that constitute the scene (including escape characters) */
         char* _scene_contents{};
-
-        /* tracks the number of entities that have been added to the scene */
-        int _entity_counter{};
 
         /* Determines scene width */
         int _number_of_chars_before_first_newline(const char*);

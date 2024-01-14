@@ -51,14 +51,6 @@ char* Scene::print(std::tuple<int, int> coord_0, std::tuple<int, int> coord_1){
     return nullptr;
 };
 
-int Scene::count(){
-    return this->_entity_counter;
-};
-
-void Scene::add(const char* thing){
-    this->_entity_counter+=1;
-}
-
 int Scene::_number_of_chars_before_first_newline(const char* scene_contents){
     for (int i{}; i <= strlen(scene_contents); i++)
         if (scene_contents[i] == '\n')
