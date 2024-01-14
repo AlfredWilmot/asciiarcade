@@ -23,8 +23,8 @@ enable_testing()
 
 add_executable(
     "${PROJECT_NAME}"
-    src/Scene.cpp
-    test/SceneTest.cpp
+    src/SceneView.cpp
+    test/SceneViewTest.cpp
 )
 
 target_link_libraries(
