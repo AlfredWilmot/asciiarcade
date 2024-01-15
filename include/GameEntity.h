@@ -1,3 +1,4 @@
+/* Represents a point in space */
 struct Cartesian {
     float x{};
     float y{};
@@ -17,4 +18,3 @@ struct GameEntity{
     int gid{}; // ID associating this entity with some wider entity group
     Particle info{};
 };
-
