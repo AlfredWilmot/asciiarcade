@@ -14,14 +14,11 @@ class SceneView{
         /* Release memory-block used to store the scene when the show is done */
         ~SceneView();
 
-        /* Dumps contents of scene onto the display */
+        /* print entire scene */
+        char* print();
 
-            // print entire scene
-            char* print();
-            // print an individual character from scene
-            char* print(std::tuple<int, int> coord);
-            // print a "region-of-interest" (ROI) from scene
-            char* print(std::tuple<int, int> coord_0, std::tuple<int, int> coord_1);
+        /* print an individual character from scene */
+        char* print(std::tuple<int, int> coord);
 
         /* SceneView attribute getter methods */
         int height;

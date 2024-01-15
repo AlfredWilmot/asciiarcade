@@ -74,14 +74,6 @@ TEST(SceneViewTest, print_an_individual_character_from_scene_using_coordinates)
     ASSERT_EQ(expected, *actual);
 }
 
-TEST(SceneViewTest, print_a_group_of_characters_from_scene_using_coordinate_pair)
-{
-    SceneView scene(valid_background_scene);
-    char* actual = scene.print({18,2}, {42,6});
-    const char* expected = valid_background_scene_segment;
-    ASSERT_STREQ(expected, actual);
-}
-
 TEST(SceneViewTest, attempting_to_print_invalid_coordinate_throws_exception)
 {
     EXPECT_THROW(

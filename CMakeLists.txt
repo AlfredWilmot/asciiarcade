@@ -24,7 +24,9 @@ enable_testing()
 add_executable(
     "${PROJECT_NAME}"
     src/SceneView.cpp
+    src/GameState.cpp
     test/SceneViewTest.cpp
+    test/GameStateTest.cpp
 )
 
 target_link_libraries(

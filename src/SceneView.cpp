@@ -39,18 +39,6 @@ char* SceneView::print(std::tuple<int, int> coord){
     return &this->_scene_contents[this->_coord_to_buffer_index(x, y)];
 };
 
-char* SceneView::print(std::tuple<int, int> coord_0, std::tuple<int, int> coord_1){
-    int x_0 = std::get<0>(coord_0);
-    int y_0 = std::get<1>(coord_0);
-    int x_1 = std::get<0>(coord_1);
-    int y_1 = std::get<1>(coord_1);
-    // ToDo
-    // determine width and height of segment
-    // create a linked-list of segment-slices
-    // each segment slice ends with a newline, except the last one which uses '\0'
-    return nullptr;
-};
-
 int SceneView::_number_of_chars_before_first_newline(const char* scene_contents){
     for (int i{}; i <= strlen(scene_contents); i++)
         if (scene_contents[i] == '\n')
