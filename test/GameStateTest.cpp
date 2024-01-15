@@ -1,12 +1,7 @@
 #include <gtest/gtest.h>
-#include "GameState.h"
+#include "GameEntityStack.h"
 
-TEST(GameStateTest, todo)
+TEST(GameEntityStack, todo)
 {
     FAIL();
 }
-
-//TEST(GameStateTest, todo)
-//{
-//    FAIL();
-//}
