@@ -13,14 +13,9 @@ GameEntityStack::~GameEntityStack()
         free(this->_game_entity_buffer);
 };
 
-GameEntity GameEntityStack::get(int id)
+GameEntity GameEntityStack::get(int idx)
 {
     return GameEntity{};
-};
-
-const GameEntity* GameEntityStack::group_get(int gid)
-{
-    return nullptr;
 };
 
 bool GameEntityStack::update(int id, GameEntity updated_entity)

@@ -5,12 +5,12 @@ class GameEntityStack{
     public:
         GameEntityStack(int entity_count);
         ~GameEntityStack();
-        /* Get an individual by id */
-        GameEntity get(int id);
-        /* Get a list of entites associated by group-id */
-        const GameEntity* group_get(int gid);
+        /* Get an individual entity by index */
+        GameEntity get(int idx);
         /* Update a particular entity by id */
         bool update(int id, GameEntity updated_entity);
     private:
         GameEntity* _game_entity_buffer{};
+        int _max_number_of_entities{};
+        int _entity_counter{};
 };
