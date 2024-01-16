@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <stdexcept>
 #include "GameEntityStack.h"
 
 GameEntityStack::GameEntityStack(int entity_count)
@@ -15,6 +16,9 @@ GameEntityStack::~GameEntityStack()
 
 GameEntity GameEntityStack::get(int idx)
 {
+    if (this->_entity_counter<=0) {
+        throw std::invalid_argument("There are no entities in this stack!");
+    }
     return GameEntity{};
 };
 
