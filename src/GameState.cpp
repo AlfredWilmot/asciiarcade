@@ -14,10 +14,10 @@ GameEntityStack::~GameEntityStack()
 void GameEntityStack::_allocate_stack(int stack_size)
 {
     if (stack_size < 1) {
-        throw std::invalid_argument("Allocated stack-size must exceed 1"); 
+        throw std::invalid_argument("Allocated stack-size must exceed 0");
     }
     this->_max_entity_count=stack_size;
-    this->_game_entity_buffer=(GameEntity*)calloc(stack_size, sizeof(GameEntity));
+    this->_game_entity_buffer=(GameEntity*)calloc(stack_size+1, sizeof(GameEntity));
 };
 void GameEntityStack::_deallocate_stack()
 {
@@ -27,7 +27,14 @@ void GameEntityStack::_deallocate_stack()
 
 GameEntity GameEntityStack::add(GameEntity new_entity)
 {
-    return GameEntity{};
+    if (this->count() < this->max_count()) {
+        this->_entity_counter+=1;
+        this->_game_entity_buffer[this->count()] = new_entity;
+    }
+    else {
+        throw std::invalid_argument("Stack is full.");
+    }
+    return this->_game_entity_buffer[this->count()];
 };
 GameEntity GameEntityStack::get(int idx)
 {
@@ -41,10 +48,10 @@ GameEntity GameEntityStack::update(int idx, GameEntity updated_entity)
 
 int GameEntityStack::max_count()
 {
-    return 0;
+    return this->_max_entity_count;
 };
 
 int GameEntityStack::count()
 {
-    return 0;
+    return this->_entity_counter;
 };
