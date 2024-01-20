@@ -37,15 +37,21 @@ TEST(GameEntityStack, total_entities_added_cannot_exceed_the_stack_size)
                     std::invalid_argument
                 );
             }
-            else
-            {
-                EXPECT_NO_THROW({game_stack.add(GameEntity());});
-            }
-            
         }
     };
 }
 
+TEST(GameEntityStack, can_add_entity_when_not_exceeding_stack_size)
+{
+    for (int stack_size=1; stack_size<100; stack_size++) {
+        GameEntityStack game_stack(stack_size);
+        for (int entity_count{}; entity_count<100; entity_count++) {
+            if (game_stack.count() < game_stack.max_count()) {
+                EXPECT_NO_THROW({game_stack.add(GameEntity());});
+            }
+        }
+    };
+}
 //TEST(GameEntityStack, todo)
 //{
 //    FAIL();
