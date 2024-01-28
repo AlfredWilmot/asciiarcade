@@ -35,7 +35,7 @@ TEST(SceneViewTest, scene_height_matches_row_count_of_background_when_printed)
 {
     SceneView scene(valid_background_scene);
     int expected = expected_scene_height;
-    int actual = scene.height;
+    int actual = scene.height();
     ASSERT_EQ(expected, actual);
 
 }
@@ -44,7 +44,7 @@ TEST(SceneViewTest, scene_width_matches_column_count_of_background_when_printed)
 {
     SceneView scene(valid_background_scene);
     int expected = expected_scene_width;
-    int actual = scene.width;
+    int actual = scene.width();
     ASSERT_EQ(expected, actual);
 }
 

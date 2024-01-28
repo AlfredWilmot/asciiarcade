@@ -1,4 +1,4 @@
-/* Represents a point in space */
+/* Represents a coordinate in space */
 struct Cartesian {
     float x{};
     float y{};
@@ -6,15 +6,15 @@ struct Cartesian {
 
 /* A generic representation of the smallest-unit of thing */
 struct Particle{
+    float mass{};
     Cartesian position{};
     Cartesian velocity{};
     Cartesian acceleration{};
-    float mass{};
 };
 
 /* Represents unique entity that can be represented in the Scene */
 struct GameEntity{
-    int uid{}; // ID associated with this particular entity
-    int gid{}; // ID associating this entity with some wider entity group
-    Particle info{};
-};
+    int uuid = 0;                 // Universally Unique ID of this particular entity
+    int gid{};                  // Unique group ID of this entity's posse
+    Particle physical_state{};  // This entity's physical attributes
+}; 

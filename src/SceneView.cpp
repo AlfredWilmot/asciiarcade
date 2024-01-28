@@ -15,8 +15,8 @@ SceneView::SceneView(const char* scene_background)
     strcpy(this->_scene_contents, scene_background);
 
     /* Storing background dimensions when scene is initialized */
-    this->height=_total_number_of_newlines(this->_scene_contents);
-    this->width=_number_of_chars_before_first_newline(this->_scene_contents);
+    this->_height=_total_number_of_newlines(this->_scene_contents);
+    this->_width=_number_of_chars_before_first_newline(this->_scene_contents);
 };
 
 SceneView::~SceneView()
@@ -26,7 +26,7 @@ SceneView::~SceneView()
 };
 
 int SceneView::_coord_to_buffer_index(int x, int y){
-    return y*(this->width+1)+x;
+    return y*(this->width()+1)+x;
 };
 
 char* SceneView::print(){

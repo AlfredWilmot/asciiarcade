@@ -24,7 +24,7 @@ enable_testing()
 add_executable(
     "${PROJECT_NAME}"
     src/SceneView.cpp
-    src/GameState.cpp
+    src/GameEntityStack.cpp
     test/SceneViewTest.cpp
     test/GameStateTest.cpp
 )

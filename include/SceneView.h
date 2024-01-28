@@ -20,9 +20,9 @@ class SceneView{
         /* print an individual character from scene */
         char* print(std::tuple<int, int> coord);
 
-        /* SceneView attribute getter methods */
-        int height;
-        int width;
+        /* immutable attributes determined when Scene is instantiated */
+        int height(){return this->_height;};
+        int width(){return this->_width;};
 
     private:
         /* All characters that constitute the scene (including escape characters) */
@@ -39,4 +39,7 @@ class SceneView{
 
         /* Converts an (x,y) coordinate to the equivalent content_buffer index */
         int _coord_to_buffer_index(int x, int y);
+
+        int _height{};
+        int _width{};
 };
