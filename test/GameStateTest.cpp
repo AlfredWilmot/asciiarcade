@@ -4,6 +4,19 @@
 #include "GameEntityStack.h"
 
 size_t STACK_SIZE = 5;
+Particle TEST_PARTICLE({
+    .mass=1.0,
+    .position{.x=0.0, .y=0.0},
+    .velocity{.x=0.0, .y=0.0},
+    .acceleration{.x=0.0, .y=0.0},
+});
+Particle ANOTHER_TEST_PARTICLE({
+    .mass=1.0,
+    .position{.x=1.0, .y=1.0},
+    .velocity{.x=0.0, .y=0.0},
+    .acceleration{.x=0.0, .y=0.0},
+});
+
 GameEntityStack create_entity_stack(size_t stack_length){
     /* Returns a fixed-length stack for testing purposes */
 
@@ -51,12 +64,21 @@ TEST(GameEntityStack, total_entities_added_cannot_exceed_the_stack_size)
 {
     for (int stack_size=1; stack_size<STACK_SIZE; stack_size++) {
         GameEntityStack game_stack(stack_size);
-        for (int entity_count{}; entity_count<STACK_SIZE; entity_count++) {
-            if ( entity_count >= stack_size) {
+        for (int entity_count=1; entity_count<STACK_SIZE; entity_count++) {
+            Particle some_particle({
+                .position={
+                    .x=float(entity_count),
+                    .y=0
+                },
+            });
+            if (entity_count > stack_size) {
                 EXPECT_THROW(
-                    {game_stack.add(Particle{});},
-                    std::invalid_argument
+                    game_stack.add(some_particle),
+                    std::overflow_error
                 );
+            }
+            else {
+                game_stack.add(some_particle);
             }
         }
     };
@@ -67,18 +89,31 @@ TEST(GameEntityStack, can_add_entity_when_not_exceeding_stack_size)
     for (int stack_size=1; stack_size<STACK_SIZE; stack_size++) {
         GameEntityStack game_stack(stack_size);
         for (int entity_count=1; entity_count<STACK_SIZE; entity_count++) {
-            GameEntity entity({
-                .uuid = entity_count,
-                .gid = 0,
-                .physical_state = {
-                    .mass = 1.0,
-                    .position = {.x=0, .y=0},
-                    .velocity = {.x=0, .y=0},
-                    .acceleration= {.x=0, .y=0},
-                }
+            Particle some_particle({
+                .position={
+                    .x=float(entity_count),
+                    .y=0
+                },
             });
+            if (entity_count <= stack_size) {
+                EXPECT_NO_THROW(game_stack.add(some_particle));
+            }
         }
     };
+}
+
+TEST(GameEntityStack, no_two_particles_can_share_the_same_coordinates)
+{
+    GameEntityStack game_stack(STACK_SIZE);
+    Particle mars=TEST_PARTICLE;
+    Particle venus{};
+    Particle earth({
+        .position={.x=0,.y=0},
+        .velocity=Cartesian({})
+    });
+
+    game_stack.add(mars);
+    EXPECT_THROW(game_stack.add(venus), std::invalid_argument);
 }
 
 //TEST(GameEntityStack, todo)
